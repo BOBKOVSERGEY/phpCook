@@ -1,7 +1,7 @@
 <?php
-setcookie('flavor', '', 1);
-if (isset($_COOKIE['flavor'])) {
-  echo "You ate a {$_COOKIE['flavor']} cookie<br>";
+
+if (isset($_COOKIE['next_station'])) {
+  echo "You ate a {$_COOKIE['next_station']} cookie<br>";
 }
 
 
@@ -15,7 +15,6 @@ function debug($arr)
     print_r($arr);
   echo '</pre>';
 }
-
 
 debug($_COOKIE);
 
