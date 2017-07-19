@@ -1,3 +1,13 @@
+<?php
+$age = filter_input(INPUT_POST, 'age', FILTER_VALIDATE_INT);
+if ($age === false) {
+  print 'В поле возраст указано неверное значение, попробуй еще раз';
+
+} else {
+  print 'Все отдлично, данные отправлены';
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,13 +18,12 @@
   <title>Document</title>
 </head>
 <body>
-<?php if ($_SERVER['REQUEST_METHOD'] == 'GET') {?>
-  <form action="<?php echo htmlentities($_SERVER['SCRIPT_NAME'])?>" method="post">
-    <input type="text" name="firsName">
+  <form action="<?php echo htmlentities($_SERVER['SCRIPT_NAME']); ?>" method="post">
+    <input type="text" placeholder="Имя" name="firsName">
+    <input type="text" placeholder="Фамилия" name="lastName">
+    <input type="text" placeholder="Возраст" name="age">
     <input type="submit" name="Отправить">
   </form>
-<?php } else {
-  echo "Привет " .  $_POST['firsName'];
-}?>
+
 </body>
 </html>
