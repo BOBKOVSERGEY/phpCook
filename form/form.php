@@ -1,11 +1,14 @@
 <?php
-$age = filter_input(INPUT_POST, 'age', FILTER_VALIDATE_INT);
-if ($age === false) {
-  print 'В поле возраст указано неверное значение, попробуй еще раз';
+$choises = [
+            'Яйца',
+            'Тост',
+            'Кофе'
+];
 
-} else {
-  print 'Все отдлично, данные отправлены';
+if (!in_array($_POST['food'], $choises)) {
+  print 'Вы должны быбрать еду';
 }
+
 ?>
 
 <!doctype html>
@@ -19,10 +22,15 @@ if ($age === false) {
 </head>
 <body>
   <form action="<?php echo htmlentities($_SERVER['SCRIPT_NAME']); ?>" method="post">
-    <input type="text" placeholder="Имя" name="firsName">
-    <input type="text" placeholder="Фамилия" name="lastName">
-    <input type="text" placeholder="Возраст" name="age">
-    <input type="submit" name="Отправить">
+    <?php
+    echo "<select name='food'>\n";
+    foreach ($choises as $choise) {
+      echo "<option>$choise</option>\n";
+    }
+
+    echo '</select>'
+    ?>
+    <input type="submit">
   </form>
 
 </body>
